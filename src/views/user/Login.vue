@@ -131,15 +131,11 @@ export default {
         ...mapActions(["login"]),
         formSubmit() {
             this.$v.$touch();
-            this.form.email = "piaf-vue@coloredstrategies.com";
-            this.form.password = "piaf123";
+            // this.form.email = "piaf-vue@coloredstrategies.com";
+            // this.form.password = "piaf123";
             this.$v.form.$touch();
-           // if (!this.$v.form.$anyError) {
-                this.login({
-                    email: this.form.email,
-                    password: this.form.password
-                });
-            //}
+           
+            //this.$router.push("/app")
         }
     },
     watch: {

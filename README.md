@@ -25,3 +25,12 @@ npm run serve
 ```
 npm run build
 ```
+
+
+## Customization
+
+### Logo
+
+Para alterar o logo é necessário ir na pasta
+
+src/assets/logos
