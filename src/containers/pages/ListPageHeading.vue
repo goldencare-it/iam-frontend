@@ -8,7 +8,7 @@
           variant="primary"
           size="lg"
           class="top-right-button"
-        >{{ $t('pages.add-new') }}</b-button>
+        >Novo</b-button>
         <b-button-group>
           <b-dropdown split right @click="selectAll(true)" class="check-button" variant="primary">
             <label
@@ -29,8 +29,7 @@
                 }"
               >&nbsp;</span>
             </label>
-            <b-dropdown-item>{{$t('pages.delete')}}</b-dropdown-item>
-            <b-dropdown-item>{{$t('pages.another-action')}}</b-dropdown-item>
+            <b-dropdown-item>Remover</b-dropdown-item>
           </b-dropdown>
         </b-button-group>
       </div>
@@ -47,12 +46,7 @@
         </b-button>
         <b-collapse id="displayOptions" class="d-md-block">
           <span class="mr-3 d-inline-block float-md-left">
-            <a
-              :class="{'mr-2 view-icon':true,'active': displayMode==='list'}"
-              @click="changeDisplayMode('list')"
-            >
-              <data-list-icon />
-            </a>
+            
             <a
               :class="{'mr-2 view-icon':true,'active': displayMode==='thumb'}"
               @click="changeDisplayMode('thumb')"
@@ -67,23 +61,7 @@
             </a>
           </span>
           <div class="d-block d-md-inline-block pt-1">
-            <b-dropdown
-              id="ddown1"
-              :text="`${$t('pages.orderby')} ${sort.label}`"
-              variant="outline-dark"
-              class="mr-1 float-md-left btn-group"
-              size="xs"
-            >
-              <b-dropdown-item
-                v-for="(order,index) in sortOptions"
-                :key="index"
-                @click="changeOrderBy(order)"
-              >{{ order.label }}</b-dropdown-item>
-            </b-dropdown>
-
-            <div class="search-sm d-inline-block float-md-left mr-1 align-top">
-              <b-input :placeholder="$t('menu.search')"  @input="(val) => searchChange(val)" />
-            </div>
+            
           </div>
           <div class="float-md-right pt-1">
             <span class="text-muted text-small mr-1 mb-2">{{from}}-{{to}} of {{ total }}</span>

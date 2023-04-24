@@ -2,7 +2,7 @@ import { ThemeColors } from '../utils'
 const colors = ThemeColors()
 
 export const lineChartData = {
-  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'],
   datasets: [
     {
       label: '',
@@ -154,18 +154,17 @@ export const pieChartData = {
 }
 
 export const doughnutChartData = {
-  labels: ['Cakes', 'Cupcakes', 'Desserts'],
+  labels: ['Com Erros', 'Sem erros'],
   datasets: [
     {
       label: '',
-      borderColor: [colors.themeColor3, colors.themeColor2, colors.themeColor1],
+      borderColor: [colors.themeColor3, colors.themeColor2],
       backgroundColor: [
-        colors.themeColor3_10,
         colors.themeColor2_10,
         colors.themeColor1_10
       ],
       borderWidth: 2,
-      data: [15, 25, 20]
+      data: [15, 25]
     }
   ]
 }

@@ -1,5 +1,5 @@
 <template>
-  <b-card class="h-100" :title="$t('dashboards.product-categories')">
+  <b-card class="h-100" :title="$t('Total Geral')">
     <div class="dashboard-donut-chart">
       <doughnut-chart :data="doughnutChartData" shadow />
     </div>

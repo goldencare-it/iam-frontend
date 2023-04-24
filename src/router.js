@@ -15,7 +15,7 @@ const routes = [
   {
     path: adminRoot,
     component: () => import(/* webpackChunkName: "app" */ "./views/app"),
-    redirect: `${adminRoot}/dashboards`,
+    redirect: `/app/pages/product/thumb-list`,
     meta: { loginRequired: true },
     /*
     define with Authorization :

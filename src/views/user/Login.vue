@@ -105,7 +105,7 @@ export default {
     data() {
         return {
             form: {
-                email: "admin@email.com",
+                email: "admin@gft.com",
                 password: "xxxxxx"
             },
         };
@@ -135,7 +135,7 @@ export default {
             // this.form.password = "piaf123";
             this.$v.form.$touch();
            
-            //this.$router.push("/app")
+            this.$router.push("/app")
         }
     },
     watch: {

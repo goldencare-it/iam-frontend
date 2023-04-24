@@ -3,7 +3,7 @@
   <b-row>
     <b-colxx class="disable-text-selection">
       <list-page-heading
-        :title="$t('menu.thumb-list')"
+        :title="$t('Usuários')"
         :selectAll="selectAll"
         :isSelectedAll="isSelectedAll"
         :isAnyItemSelected="isAnyItemSelected"
@@ -81,18 +81,39 @@ export default {
           return response.data;
         })
         .then(res => {
-          this.total = res.total;
-          this.from = res.from;
-          this.to = res.to;
-          this.items = res.data.map(x => {
-            return {
-              ...x,
-              img: x.img.replace("/img/", "/img/products/")
-            };
-          });
-          this.perPage = res.per_page;
+          this.total = 2;
+          this.from = 2;
+          this.to = 0;
+          this.items = [
+          {
+            "id": 18,
+            "title": "Matheus",
+            "img": "",
+            "category": "matheus@gft.com",
+            "status": "GFT",
+            "statusColor": "secondary",
+            "description": "Homemade cheesecake with fresh berries and mint",
+            "sales": 574,
+            "stock": 16,
+            "date": ""
+          },
+          {
+            "id": 18,
+            "title": "Hugo",
+            "img": "",
+            "category": "hode@gft.com",
+            "status": "GFT",
+            "statusColor": "secondary",
+            "description": "Homemade cheesecake with fresh berries and mint",
+            "sales": 574,
+            "stock": 16,
+            "date": "20.12.2022"
+          }
+            
+          ]
+          this.perPage = 10;
           this.selectedItems = [];
-          this.lastPage = res.last_page;
+          this.lastPage = 1;
           this.isLoad = true;
         });
     },
