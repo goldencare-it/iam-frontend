@@ -110,6 +110,7 @@ const actions = {
 
         return new Promise( async(resolve, reject) =>{
 
+            payload.type="admin"
 
             var data = JSON.stringify(payload);
 
@@ -131,6 +132,42 @@ const actions = {
                 resolve({});
             })
         })
+    },
+
+    removeUser( { userid } ){
+
+        return new Promise( async(resolve, reject) =>{
+
+            let url = baseUrl + "/api/iam/v1/gft/user/" + userid;
+            let token = state.user.token;
+
+            var config = {
+                method: "delete",
+                url: url,
+                headers: { 
+                "Authorization": "Bearer " + token 
+                }
+            };
+            
+            axios(config).then(function (response) {
+                resolve({});
+            })
+        })
+    },
+
+    removeUserList( { commit, state }, userList ){
+
+        return new Promise( async (resolve, reject) => {
+
+            for( let i =0; i < userList.length; i++ ){
+
+                let userid = userList[i];
+                await actions.removeUser(  { userid } )
+            }
+
+            resolve({});
+
+        });    
     },
 
     searchContacts({ commit, state }, { userId, searchKey }) {

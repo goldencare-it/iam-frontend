@@ -29,7 +29,7 @@
                 }"
               >&nbsp;</span>
             </label>
-            <b-dropdown-item>Remover</b-dropdown-item>
+            <b-dropdown-item @click="onRemoveItem()">Remover</b-dropdown-item>
           </b-dropdown>
         </b-button-group>
       </div>
@@ -116,7 +116,8 @@ export default {
     "from",
     "to",
     "total",
-    "perPage"
+    "perPage",
+    "onRemoveItem"
   ],
   data() {
     return {
@@ -160,6 +161,23 @@ export default {
       ],
       pageSizes: [4, 8, 12]
     };
+  },
+  methods: {
+
+    removeUser(){
+      alert("removendo usuário")
+
+      let self = this;
+
+      
+      console.log("self " );
+
+      console.log("this", keymap );
+      console.log("props", this._props );
+
+    }
   }
 };
 </script>
+
+

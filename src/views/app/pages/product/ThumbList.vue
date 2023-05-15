@@ -18,6 +18,7 @@
         :to="to"
         :total="total"
         :perPage="perPage"
+        :onRemoveItem="onRemoveItem"
       ></list-page-heading>
       <template v-if="isLoad">
         <list-page-listing
@@ -76,7 +77,16 @@ export default {
     };
   },
   methods: {
-    ...mapActions([ "getUsers"]),
+    ...mapActions([ "getUsers", "removeUserList"]),
+    onRemoveItem(){
+        
+        console.log("selected", this.selectedItems );
+        console.log("items", this.items );
+
+        this.removeUserList( this.selectedItems ).then( () => {
+          alert("registros removidos  com sucesso");
+        });
+    },
     loadItems() {
       this.isLoad = false;
 
