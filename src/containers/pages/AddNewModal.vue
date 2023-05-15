@@ -7,16 +7,26 @@
   >
     <b-form>
       <b-form-group :label="$t('Usuário')">
-        <b-form-input v-model="newItem.title" />
+        <b-form-input v-model="newItem.name" />
       </b-form-group>
       <b-form-group :label="$t('E-mail')">
         <b-form-input v-model="newItem.email" />
       </b-form-group>
+      <b-form-group :label="$t('Senha')">
+
+        <input type="password" class="form-control" v-model="newItem.password" />
+      </b-form-group>
+      <b-form-group :label="$t('Nome da organização')">
+        <b-form-input v-model="newItem.organizationName" />
+      </b-form-group>
+
+      <!--
       <b-form-group :label="$t('Organização')">
         <v-select 
           :options="organizations" v-model="newItem.category" />
       </b-form-group>
-      
+      -->
+
     </b-form>
 
     <template slot="modal-footer">
@@ -29,6 +39,10 @@
   </b-modal>
 </template>
 <script>
+import {
+    mapGetters,
+    mapActions
+} from "vuex";
 import vSelect from "vue-select";
 import "vue-select/dist/vue-select.css";
 export default {
@@ -39,7 +53,7 @@ export default {
   data() {
     return {
       newItem: {
-        title: "",
+        name: "",
         category: "",
         description: "",
         status: ""
@@ -57,8 +71,16 @@ export default {
     };
   },
   methods: {
+    ...mapActions([ "addNewUser"]),
     addNewItem() {
       console.log("adding item : ", this.newItem);
+
+      const payload = this.newItem;
+      this.addNewUser( payload ).then( () => {
+        alert("Usuário adicionado com sucesso");
+
+        this.hideModal("modalright");
+      })
     },
     hideModal(refname) {
       this.$refs[refname].hide();

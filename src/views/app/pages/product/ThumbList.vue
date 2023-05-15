@@ -41,6 +41,10 @@
 </template>
 
 <script>
+import {
+    mapGetters,
+    mapActions
+} from "vuex";
 import axios from "axios";
 import { apiUrl } from "../../../../constants/config";
 import ListPageHeading from "../../../../containers/pages/ListPageHeading";
@@ -72,9 +76,28 @@ export default {
     };
   },
   methods: {
+    ...mapActions([ "getUsers"]),
     loadItems() {
       this.isLoad = false;
 
+      console.log("getUsers");
+      this.getUsers().then( response =>{
+        console.log("response", response)
+
+        const list = response;
+
+        this.total = list.length;
+          this.from = list.length;
+          this.to = 0;
+          this.items = list;
+          this.perPage = 10;
+          this.selectedItems = [];
+          this.lastPage = 1;
+          this.isLoad = true;
+
+      });
+
+      /*
       axios
         .get(this.apiUrl)
         .then(response => {
@@ -116,6 +139,8 @@ export default {
           this.lastPage = 1;
           this.isLoad = true;
         });
+        */
+
     },
 
     changeDisplayMode(displayType) {

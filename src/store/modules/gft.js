@@ -55,6 +55,84 @@ const actions = {
 
     },
 
+    getUsers( {commit, state} ){
+
+        return new Promise( async (resolve, reject ) => {
+
+        
+        let url = baseUrl + "/api/iam/v1/gft/user";
+        let token = state.user.token;
+
+        console.log("token", token, state );
+
+        var config = {
+            method: "get",
+            url: url,
+            headers: { 
+              "Authorization": "Bearer " + token 
+            }
+        };
+          
+        axios(config)
+          .then(function (response) {
+            
+
+            console.log("response data", response.data );
+
+            let userList = response.data.userList;
+            let list = [];
+
+            for( let i = 0; i < userList.length; i++ ){
+
+            let user = userList[i];
+
+            let to = {
+                "id": user.id,
+                "title": user.name,
+                "category": user.email,
+                "status": user.organizationName || ""
+            }
+
+            list.push( to );
+            }
+
+            resolve( list );
+            //return response.data;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        });
+    },
+
+    addNewUser( { commit, state }, payload ){
+
+        return new Promise( async(resolve, reject) =>{
+
+
+            var data = JSON.stringify(payload);
+
+            let url = baseUrl + "/api/iam/v1/gft/user";
+            let token = state.user.token;
+
+            console.log("token", token, state );
+
+            var config = {
+                method: "post",
+                url: url,
+                headers: { 
+                "Authorization": "Bearer " + token 
+                },
+                data : data
+            };
+            
+            axios(config).then(function (response) {
+                resolve({});
+            })
+        })
+    },
+
     searchContacts({ commit, state }, { userId, searchKey }) {
       if (searchKey.length > 0) {
         axios
