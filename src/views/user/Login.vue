@@ -128,14 +128,29 @@ export default {
         ...mapGetters(["currentUser", "processing", "loginError"])
     },
     methods: {
-        ...mapActions(["login"]),
+        ...mapActions(["login", "authenticate"]),
         formSubmit() {
-            this.$v.$touch();
-            // this.form.email = "piaf-vue@coloredstrategies.com";
-            // this.form.password = "piaf123";
-            this.$v.form.$touch();
-           
-            this.$router.push("/app")
+            
+            console.log("this", this );
+
+            let username = this.form.email;
+            let password = this.form.password;
+            
+            this.authenticate( { "username" : username, "password" : password} ).then( ()=> {
+
+
+                this.$v.$touch();
+                // this.form.email = "piaf-vue@coloredstrategies.com";
+                // this.form.password = "piaf123";
+                this.$v.form.$touch();
+            
+                this.$router.push("/app")
+                
+            }).catch( () => {
+                alert("Usuário não autorizado")
+            });
+
+            
         }
     },
     watch: {
