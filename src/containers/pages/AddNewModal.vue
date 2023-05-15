@@ -77,7 +77,12 @@ export default {
 
       const payload = this.newItem;
       this.addNewUser( payload ).then( () => {
-        alert("Usuário adicionado com sucesso");
+        
+
+        this.$notify({
+                    title: "Notificação",
+                    text: "Usuário com sucesso"
+                })
 
         this.hideModal("modalright");
 

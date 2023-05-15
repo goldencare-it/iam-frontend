@@ -84,7 +84,10 @@ export default {
         console.log("items", this.items );
 
         this.removeUserList( this.selectedItems ).then( () => {
-          alert("registros removidos  com sucesso");
+          this.$notify({
+                    title: "Notificação",
+                    text: "Registro removido com sucesso"
+                })
 
           this.$router.push("/app/pages/product/thumb-list")
         });

@@ -38,6 +38,8 @@
                         <b-form-invalid-feedback v-if="!$v.form.password.required">Please enter your password</b-form-invalid-feedback>
                         <b-form-invalid-feedback v-else-if="!$v.form.password.minLength || !$v.form.password.maxLength">Your password must be between 4 and 16 characters</b-form-invalid-feedback>
                         -->
+
+                        <a href="#" @click="forgotPassword">Esqueci minha senha</a>
                     </b-form-group>
                     <div class="d-flex justify-content-between align-items-center">
                        
@@ -148,8 +150,36 @@ export default {
                 //this.$router.push("/app")
                 
             }).catch( () => {
-                alert("Usuário não autorizado")
+                
+                this.$notify({
+                    title: "Erro",
+                    text: "Usuário não autorizado",
+                    type: 'error'
+                })
             });
+
+            
+        },
+
+        forgotPassword(){
+
+            let email = this.form.email;
+
+            if( ! email || email == ""){
+
+                this.$notify({
+                    title: "Erro",
+                    text: "Por favor preencha seu e-mail",
+                    type: 'error'
+                })
+
+                return 
+            }
+
+            this.$notify({
+                title: "Mensagem",
+                text: "Foram enviadas instruções para o seu e-mail para realizar a troca da senha"
+            })
 
             
         }

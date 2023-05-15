@@ -2,6 +2,7 @@
   <div class="h-100">
     <router-view />
     <color-switcher />
+    <notifications/>
   </div>
 </template>
 

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Notifications from 'vue-notification'
 import App from './App'
 
 // BootstrapVue add
@@ -12,7 +13,8 @@ import es from './locales/es.json'
 import VueI18n from 'vue-i18n'
 import { firebaseConfig } from './constants/config'
 // Notification Component Add
-import Notifications from './components/Common/Notification'
+//import Notifications from './components/Common/Notification'
+
 // Breadcrumb Component Add
 import Breadcrumb from './components/Common/Breadcrumb'
 // RefreshButton Component Add
