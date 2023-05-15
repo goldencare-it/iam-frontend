@@ -85,6 +85,8 @@ export default {
 
         this.removeUserList( this.selectedItems ).then( () => {
           alert("registros removidos  com sucesso");
+
+          this.$router.push("/app/pages/product/thumb-list")
         });
     },
     loadItems() {
@@ -105,6 +107,8 @@ export default {
           this.lastPage = 1;
           this.isLoad = true;
 
+      }).catch( ()=> {
+        this.$router.push("/")
       });
 
       /*

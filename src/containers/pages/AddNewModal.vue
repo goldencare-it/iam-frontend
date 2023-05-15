@@ -80,6 +80,8 @@ export default {
         alert("Usuário adicionado com sucesso");
 
         this.hideModal("modalright");
+
+        this.$router.push("/app/pages/product/thumb-list")
       })
     },
     hideModal(refname) {
