@@ -158,10 +158,10 @@ export const doughnutChartData = {
   datasets: [
     {
       label: '',
-      borderColor: [colors.themeColor3, colors.themeColor2],
+      borderColor: [colors.themeColor6, colors.themeColor1],
       backgroundColor: [
-        colors.themeColor2_10,
-        colors.themeColor1_10
+        colors.themeColor6_10,
+        colors.themeColor1
       ],
       borderWidth: 2,
       data: [15, 25]

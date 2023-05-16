@@ -19,24 +19,41 @@ const data = [{
 {
   id: "iam",
   icon: "iconsminds-digital-drawing",
-  label: "IAM",
+  label: "Usuários",
   to: `${adminRoot}/pages`,
   subs: [
-  {
-    id: "pages-product",
-    label: "Gestão de Usuários",
-    to: `${adminRoot}/pages/product`,
-    subs: [
     {
-      icon: "simple-icon-list",
-      label: "Usuários",
-      to: `${adminRoot}/pages/product/thumb-list`
+      id: "pages-product",
+      label: "Gestão de Usuários",
+      to: `${adminRoot}/pages/product`,
+      subs: [
+        {
+          icon: "simple-icon-list",
+          label: "Usuários",
+          to: `${adminRoot}/pages/product/thumb-list`
+        },
+      ]
     },
-    
-    ]
-  },
-  
- 
+  ]
+},
+{
+  id: "system",
+  icon: "iconsminds-gear",
+  label: "Logout",
+  to: `${adminRoot}/pages`,
+  subs: [
+    {
+      id: "pages-product",
+      label: "Sistema",
+      to: `${adminRoot}/pages/product`,
+      subs: [
+        {
+          icon: "simple-icon-list",
+          label: "Sair do sistema",
+          to: `${adminRoot}/`
+        },
+      ]
+    },
   ]
 },
 
