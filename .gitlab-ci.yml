@@ -1,0 +1,31 @@
+
+
+image: node:14.5.0-alpine
+
+stages:
+- pre-config
+- deploy_development
+
+pre-config:
+  stage: pre-config
+  tags:
+    - dev-team
+  script:
+    - npm install @vue/cli
+    - npm install
+
+deploy_development
+  stage: deploy_development
+  tags:
+    - dev-team
+  script:
+    - export AWS_GENIAL_HOMOLOG_ACCESS_KEY_ID=$AWS_GENIAL_HOMOLOG_ACCESS_KEY_ID
+    - export AWS_GENIAL_HOMOLOG_SECRET_ACCESS_KEY=$AWS_GENIAL_HOMOLOG_SECRET_ACCESS_KEY
+    - aws configure set aws_access_key_id $AWS_GENIAL_HOMOLOG_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_GENIAL_HOMOLOG_SECRET_ACCESS_KEY
+    - aws configure set region "us-east-1"
+    - npm run build
+    - aws s3 sync dist s3://gobaas-goquality --acl public-read
+
+only:
+  - development
